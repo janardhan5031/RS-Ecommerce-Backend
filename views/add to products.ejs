@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>shop</title>
+</head>
+<body>
+    <header class="nav_header">
+        <div class="nav_bar">
+            <li>
+                <a href="/">SHOP</a>
+                <a href="/add-product">Add Products</a>
+            </li>
+        </div>
+    </header>
+
+    <div class="form_body">
+        <div class="add_products_container">
+            <div class="container">
+                <form action="<% if (editing) { %> /post-edit-product <% }else{ %>/post-add-product<% } %>" method="post">
+                    <div>
+                        <label for="title">Name</label>
+                        <input type="text" name="title" id="prod_name" value="<% if (editing){ %><%= prod.title %> <% } %>">
+                    </div>
+                    <div>
+                        <label for="imageUrl">Image Url</label>
+                        <input type="text" name="imageUrl" id="prod_name" value="<% if (editing){ %><%= prod.imageUrl %><% } %>">
+                    </div>
+                    <div>
+                        <label for="price">Cost</label>
+                        <input type="text" name="price" id="prod_name" value="<% if (editing){ %><%= prod.price %> <% } %>">
+                    </div>
+                    <% if (editing){ %>
+                        <input type="hidden" value="<%= prod.id %>" name="productId">
+                    <% } %>
+                    <button type="submit" id="prod_add_btn">
+                        <% if(editing){ %>
+                            update
+                        <% }else{ %>
+                            add
+                        <% } %>   
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+</body>
+</html>

@@ -1,0 +1,104 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.nav_header{
+    background-color: rgba(117, 39, 173, 0.76);
+    height: 4rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+.nav_bar{
+    top: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+.nav_bar li{
+    list-style: none;
+}
+.nav_bar li a{
+    color: white;
+    text-decoration: none;
+    margin: 3rem;
+}
+
+.main_body{
+    margin: 2rem;
+}
+
+/* items list */
+.items_list{
+    align-items: center;
+    justify-content: center;
+}
+.items_top_hdr h2{
+    text-align: center;
+}
+.products_container{
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.product{
+    margin: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+.product p{
+    text-align: center;
+}
+.products_container .image_container, img{
+    height: 200px;
+    width: 200px;
+}
+.card_actions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card_actions a{
+    align-items: center;
+    text-decoration: none;
+    width: 3rem;
+    margin: 1rem;
+    border: 2px solid greenyellow;
+}
+.card_actions a p{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.card_actions button{
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid greenyellow;
+}
+
+/* add products form button   */
+.form_body{
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+}
+.add_products_container{
+    position: absolute;
+    width: 60%;
+    height: 40%;
+    top: 5rem;
+    right: 20%;
+    border: 2px solid royalblue;
+    padding: 1rem;
+}
+.container form label , input{
+    margin: 1rem;
+}
+.container form button{
+    margin: 1rem;
+    position: absolute;
+    width: 10%;
+    right: 45%;
+    cursor: pointer;
+}

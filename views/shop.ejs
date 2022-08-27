@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>shop</title>
+</head>
+<body>
+    <header class="nav_header">
+        <div class="nav_bar">
+            <li>
+                <a href="/">SHOP</a>
+                <a href="/add-product">Add Products</a>
+            </li>
+        </div>
+    </header>
+
+    <div class="items_list">
+        <div class="items_top_hdr"><h2>OUR PRODUCTS</h2></div>
+            <div class="products_container" id="products">
+                
+                <% if (prods.length > 0) { %>
+
+                    <% for(let product of prods) { %>
+        
+                        <div class="product" id="<%= product.id %>>">
+                            <p><%= product.title %></p>
+                            <div class="image_container"><img src="<%= product.imageUrl %>" alt=""></div>
+                            <p><%= product.price %></p>
+            
+                            <div class="card_actions">
+                                <a class="add_to_crt_btn" href="/get-edit-product/<%= product.id %>?edit=true"><p>EDIT</p></a>
+                                <form action="/delete-product" method="post">
+                                    <input type="hidden" value="<%= product.id%>" name="productId">
+                                    <button type="submit" class="add_to_crt_btn">DELETE</button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                    <% } %>
+        
+                <% } else { %>
+                    <h2>there is no products in database</h2>
+                <% } %>
+                
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
