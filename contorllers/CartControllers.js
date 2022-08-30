@@ -116,3 +116,52 @@ exports.deleteItem = (req,res,next) =>{
     })
     .catch(err => console.log(err));
 }
+
+
+// order now path controller
+exports.orderNow = (req,res,next) => {
+    try{
+        let fetched_order;
+        // getting the user order tabel
+        req.user.getOrder()
+        .then(order =>{
+            fetched_order = order;
+        })
+        .catch(err => console.log(err));
+        
+        // getting the all products from user's cart table 
+        //and post their ids in order table
+        req.user.getCart()
+        .then(cart =>{
+            return cart.getProducts();
+        })
+        .then(products =>{
+            fetched_order.addProducts(products);
+        })
+        .catch(err => console.log(err));
+
+        // sending the posted data in order table to frontend in responce
+        req.user.getOrder()
+        .then( orders =>{
+            return orders.getProducts()
+        })
+        .then(products => {
+            res.send(products);
+        })
+        .catch(err => console.log(err));
+        
+    }catch(err){
+        console.log(err)
+    }
+}
+
+exports.orderNowResponce = (req,res,next) =>{
+    req.user.getOrder()
+    .then( orders =>{
+        return orders.getProducts()
+    })
+    .then(products => {
+        res.send(products);
+    })
+    .catch(err => console.log(err));
+}

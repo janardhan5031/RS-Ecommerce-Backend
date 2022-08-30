@@ -1,7 +1,7 @@
 const product = require('../models/product');
 
 exports.getProducts = (req,res,next) =>{
-    product.findAll({offset:4 ,limit:2})
+    product.findAll({offset:0 ,limit:2})
     .then(products =>{
         //products.forEach(product => console.log(product));
         res.render('shop',{

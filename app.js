@@ -9,6 +9,8 @@ const product = require('./models/product');    // importing products table
 const cart = require('./models/cart');    // importing cart table
 const cartItem = require('./models/cart-items');    // importing cart table
 const User = require('./models/user');    // importing cart table
+const Orders = require('./models/orders');    // importing cart table
+const OrdersItem = require('./models/order-Item');    // importing cart table
 
 const body_parser=require('body-parser');   //importing body-parser module for extracting data form req body
 
@@ -37,6 +39,7 @@ const adminRouters = require('./routes/admin');
 const cartRouters = require(('./routes/cart'));
 const errorRouter = require('./contorllers/errorController');
 
+
 //from here we have app for all req and res's 
 app.use(shopRouters);
 app.use(adminRouters);
@@ -51,9 +54,17 @@ cart.belongsTo(User);
 cart.belongsToMany(product, { through: cartItem});
 product.belongsToMany(cart,{ through:cartItem});
 
+User.hasOne(Orders);    //user has own orders table to keep on track
+
+Orders.belongsToMany(product, { through: OrdersItem});  // signle user's order table should hold multiple products and
+product.belongsToMany(Orders,{through:OrdersItem});     // sigle product can be placed in multiple user's orders table
+// so we need to bulid many to many relation between orders and products table for that we used orderItems junction table
+
+
+
 
 database
-.sync()
+.sync()   
 //.sync({force:true})
 .then(result =>{
     return User.findByPk(1);
@@ -66,9 +77,11 @@ database
     return user;
 })
 .then(user =>{
-    return user.createCart();
+    user.createCart();
+    user.createOrder();
+    return ;
 })
-.then(cart => {
+.then(() => {
     app.listen(3000);
 })
 .catch(err => console.log(err));

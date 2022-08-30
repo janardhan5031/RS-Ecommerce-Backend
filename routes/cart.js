@@ -13,4 +13,8 @@ router.post('/add-to-cart-out/:prodId', cartController.postItemToCartOut) ;
 
 router.post('/delete-cart-product',cartController.deleteItem);
 
+router.post('/order-now',cartController.orderNow);
+
+router.get('/order-now-get', cartController.orderNowResponce);
+
 module.exports = router;
