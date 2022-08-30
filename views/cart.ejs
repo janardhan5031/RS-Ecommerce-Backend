@@ -32,22 +32,18 @@
                             <p><%= product.price %></p>
             
                             <div class="card_actions">
-                                <a class="add_to_crt_btn" href="/get-edit-product/<%= product.id %>?edit=true"><p>EDIT</p></a>
-                                <form action="/delete-product" method="post">
+                                <form action="/delete-cart-product" method="post">
                                     <input type="hidden" value="<%= product.id%>" name="productId">
                                     <button type="submit" class="add_to_crt_btn">DELETE</button>
-                                </form>
-                                <form action="/add-to-cart" method="post">
-                                    <input type="hidden" value="<%= product.id%>" name="productId">
-                                    <button type="submit" class="add_to_crt_btn">ADD TO CART</button>
                                 </form>
                             </div>
                         </div>
                         
                     <% } %>
+                    
         
                 <% } else { %>
-                    <h2>there is no products in database</h2>
+                    <h2>there is no products in cart</h2>
                 <% } %>
                 
             </div>

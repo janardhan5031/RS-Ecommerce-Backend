@@ -1,5 +1,5 @@
 
-const product= require('../models/product');    // importing  the product table in database
+const Product= require('../models/product');    // importing  the product table in database
 
 exports.getaddProduct = (req,res,next ) =>{
     res.render('add to products',{
@@ -12,7 +12,8 @@ exports.postaddProduct = (req,res,next) =>{
     const price = req.body.price;
     const imageUrl = req.body.imageUrl;
 
-    product.create({
+    req.user
+    .createProduct({
        title:title,
        price:price,
        imageUrl:imageUrl
@@ -28,7 +29,7 @@ exports.getEditProduct = (req,res,next) =>{
         return res.redirect('/');
     }
     const prodId = req.params.productId;
-    product.findByPk(prodId).then((product) => {
+    Product.findByPk(prodId).then((product) => {
         if(!product){ return res.redirect('/')}
         res.render('add to products',{
             prod:product,
@@ -44,7 +45,7 @@ exports.postEditProduct = (req,res,next) => {
     const title = req.body.title;
     const price = req.body.price;
     const imageUrl = req.body.imageUrl;
-    product.update({
+    Product.update({
         title:title,
         price:price,
         imageUrl:imageUrl,
@@ -57,7 +58,7 @@ exports.postEditProduct = (req,res,next) => {
 
 exports.deleteProduct =(req,res,next) =>{
     const prodId = req.body.productId;
-    product.destroy({
+    Product.destroy({
         where:{id:prodId}
     })
     .then(() => res.redirect('/'))
