@@ -12,9 +12,8 @@ router.post('/add-to-cart', cartController.postItemToCart) ;
 router.post('/add-to-cart-out/:prodId', cartController.postItemToCartOut) ;
 
 router.post('/delete-cart-product',cartController.deleteItem);
+router.post('/delete-cart-product-out',cartController.deleteItemOut);
 
-router.post('/order-now',cartController.orderNow);
 
-router.get('/order-now-get', cartController.orderNowResponce);
 
 module.exports = router;
