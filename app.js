@@ -21,7 +21,7 @@ const body_parser=require('body-parser');   //importing body-parser module for e
 
 app.use(cors());      // cors connect backend to frontend
 app.set('view engine', 'ejs');      // setting ejs engine 
-app.set('views','views');           // setting the path for ejs to get ejs files
+app.set('views','views');          // setting the path for ejs to get ejs files
 
 app.use(body_parser.urlencoded({extended:false}));  // extract data from requsts in url formate
 app.use(body_parser.json());  // extract data from requsts in json formate
