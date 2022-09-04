@@ -11,7 +11,7 @@ const database = require('./utility/database');    // impoting database
 
 const product = require('./models/product');    // importing products table
 const cart = require('./models/cart');    // importing cart table
-const cartItem = require('./models/cart-items');    // importing cart table
+const cartItem = require('./models/cart-Items');    // importing cart table
 const User = require('./models/user');    // importing cart table
 const Orders = require('./models/orders');    // importing cart table
 const OrderDetails = require('./models/orderDetails');    // importing cart table
