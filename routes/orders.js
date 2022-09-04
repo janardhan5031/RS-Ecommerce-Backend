@@ -8,6 +8,6 @@ const ordersController = require('../contorllers/ordersController');
 
 router.post('/order-now',ordersController.orderNow);
 
-router.get('/order-now-get', ordersController.orderNowResponse);
+router.get('/get-all-order-items', ordersController.getAllOrders);
 
 module.exports = router;

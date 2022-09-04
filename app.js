@@ -3,6 +3,10 @@ const express= require('express');  //importing the express module
 
 const cors = require('cors');       //impoting corse module 
 
+const dotenv = require('dotenv');
+const app=express();    // creating app by invoking the express module 
+dotenv.config();
+
 const database = require('./utility/database');    // impoting database
 
 const product = require('./models/product');    // importing products table
@@ -14,7 +18,6 @@ const OrderDetails = require('./models/orderDetails');    // importing cart tabl
 
 const body_parser=require('body-parser');   //importing body-parser module for extracting data form req body
 
-const app=express();    // creating app by invoking the express module 
 
 app.use(cors());      // cors connect backend to frontend
 app.set('view engine', 'ejs');      // setting ejs engine 

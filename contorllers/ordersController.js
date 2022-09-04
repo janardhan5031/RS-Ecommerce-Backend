@@ -31,15 +31,26 @@ exports.orderNow = (req,res,next) => {
     .catch(err => console.log(err));
 }
 
-exports.orderNowResponse = (req,res,next) =>{
-    req.user.getOrders()
-    .then(order =>{
-        return order[0].getProducts({where:{id:24}})
-    })
-    .then(products =>{
-        res.send(products)
-    })
-    .catch(err => console.log(err));
+exports.getAllOrders = (req,res,next) =>{
+    let prods = [];
+   req.user.getOrders()
+   .then(orders =>{
+       let orders_length =orders.length;
+
+       orders.forEach(order =>{
+        order.getProducts()
+        .then(products =>{
+            //console.log(products);
+            prods.push(...products);
+            orders_length--;
+            if(!orders_length){
+                res.send(prods);
+            }
+        })
+        .catch(err =>{console.log(err)})
+       })
+   })
+   .catch(err => console.log(err));
 }
 
 // order now path controller   
